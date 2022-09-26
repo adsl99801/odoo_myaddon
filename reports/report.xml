@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+<record id="paperformat_euro_lowmargin" model="report.paperformat">
+    <field name="name">European A4 low margin</field>
+    <field name="default" eval="True"/>
+    <field name="format">A4</field>
+    <field name="page_height">0</field>
+    <field name="page_width">0</field>
+    <field name="orientation">Portrait</field>
+    <field name="margin_top">0</field>
+    <field name="margin_bottom">5</field>
+    <field name="margin_left">5</field>
+    <field name="margin_right">5</field>
+    <field name="header_line" eval="False"/>
+    <field name="header_spacing">0</field>
+    <field name="dpi">80</field>
+</record>
+
+    <template id="report_myaddon_tmp1">
+    <div class="header">
+				
+		        <div class="row">
+		            <div class="col-xs-12">
+		                <div style="border-bottom: 1px solid black;"></div>
+		            </div>
+		        </div>
+		        <div class="row mt8 mb8">
+		            <div class="col-xs-5">
+		             
+		            </div>
+	        	</div>
+					
+
+		</div>
+          <t t-call="web.html_container">
+            <t t-foreach="docs" t-as="o">
+                <t t-call="web.external_layout">
+                    <div class="page">
+                        <h2>Odoo Report</h2>
+                        <div>
+                            <strong>Name:</strong>
+                            <p t-field="o.name"/>
+                        </div>
+                        <div>
+                            <strong>Name_track_always:</strong>
+                            <p t-field="o.value"/>
+                        </div>
+                    </div>
+                </t>
+            </t>
+        </t>
+
+
+      
+    </template>
+
+    <report
+        id="report_myaddon"
+        string="myaddon Report"
+        model="myaddon.myaddon"
+        report_type="qweb-pdf"
+        name="myaddon.report_myaddon_tmp1"
+        file="myaddon.report_myaddon_tmp1"
+        paperformat="myaddon.paperformat_euro_lowmargin"
+        print_report_name="'Demo Report - %s' % ((object.name).replace('/', ''))"
+    />
+
+</odoo>

@@ -1,0 +1,7 @@
+sudo cp -R myaddon /usr/lib/python3/dist-packages/odoo/addons/
+sudo apt-get install nodejs npm -y
+sudo npm install -g rtlcss
+sudo apt-get install xfonts-75dpi
+sudo apt-get install xvfb libfontconfig wkhtmltopdf
+sudo systemctl restart odoo
+sudo tail -f /var/log/odoo/odoo-server.log
